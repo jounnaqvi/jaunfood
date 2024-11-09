@@ -7,6 +7,7 @@ require("./db");
 
 const app = express();
 const port = process.env.PORT || 5000;
+app.use(express.json());
 
 // Middleware
 app.use(cors());
@@ -22,7 +23,6 @@ app.use("/api",require("./Routes/DisplayData"));
 app.use('/api', require('./Routes/Orderdata'));
 app.use('/api', require('./Routes/CreateUser')); 
 app.use('/api', require("./Routes/paymentRoutes"));
-app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build"))); // Adjusted path
 
 // Fallback to serve index.html for any other requests
